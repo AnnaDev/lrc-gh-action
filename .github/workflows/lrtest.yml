@@ -2,10 +2,10 @@ name: LoadRunner Cloud Run Test Workflow
 'on':
   push:
     branches:
-      - main
+      - dev
   pull_request:
     branches:
-      - main
+      - dev
   workflow_call:
     inputs:
       lrc_server:
@@ -65,11 +65,7 @@ jobs:
           lrc_server: ${{ github.event.inputs.lrc_server || 'https://loadrunner-cloud.saas.microfocus.com' }}
           lrc_tenant: ${{ github.event.inputs.lrc_tenant || secrets.LRC_TENANT_ID }}
           lrc_project: ${{ github.event.inputs.lrc_project || secrets.LRC_PROJECT_ID }}
-          lrc_test_id: ${{ github.event.inputs.lrc_test_id || secrets.LRC_TEST_ID }}
-          
-      - name: Print test run ID
-        if: '${{ always() }}'
-        run: 'echo "LRC Run ID is ${{ steps.lrc_run_test.outputs.lrc_run_id }}"'
+          lrc_test_id: ${{ github.event.inputs.lrc_test_id || secrets.LRC_TEST_ID }}   
         
       - name: Check test initialization and exit
         if: steps.lrc_run_test.outputs.lrc_run_id != ''

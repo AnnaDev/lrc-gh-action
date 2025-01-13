@@ -11,6 +11,7 @@ on:
       lrc_tenant:
         description: 'Tenant ID'
         required: true
+        default: '688577294'
         type: string
       lrc_project:
         description: 'Project ID'
@@ -20,6 +21,7 @@ on:
       lrc_test_id:
         description: 'Test ID'
         required: true
+        default: '123'
         type: string
       lrc_output_dir:
         description: 'The directory to save results'

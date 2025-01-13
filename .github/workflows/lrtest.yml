@@ -39,3 +39,17 @@ jobs:
       - name: Print test run ID
         if: '${{ always() }}'
         run: 'echo "LRC Run ID is ${{ steps.lrc_run_test.outputs.lrc_run_id }}"'
+        
+      - name: Check test initialization and exit
+        if: steps.lrc_run_test.outputs.lrc_run_id != ''
+        run: |
+          echo "::notice::Test started successfully!"
+          echo "Test started successfully with Run ID: ${{ steps.lrc_run_test.outputs.lrc_run_id }}"
+          echo "Workflow will exit now. Test execution continues in LoadRunner Cloud."
+          exit 0
+          
+      - name: Handle test initialization failure
+        if: steps.lrc_run_test.outputs.lrc_run_id == ''
+        run: |
+          echo "::error::Failed to start the test in LoadRunner Cloud"
+          exit 1

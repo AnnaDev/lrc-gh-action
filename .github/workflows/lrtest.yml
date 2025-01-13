@@ -2,10 +2,10 @@ name: LoadRunner Cloud Run Test Workflow
 'on':
   push:
     branches:
-      - main
+      - dev
   pull_request:
     branches:
-      - main
+      - dev
   workflow_call:
     secrets:
       LRC_CLIENT_ID:

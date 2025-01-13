@@ -2,42 +2,11 @@ name: LoadRunner Cloud Run Test Workflow
 'on':
   push:
     branches:
-      - dev
+      - main
   pull_request:
     branches:
-      - dev
+      - main
   workflow_call:
-    inputs:
-      lrc_server:
-        description: LRC URL
-        required: true
-        default: 'https://loadrunner-cloud.saas.microfocus.com'
-        type: string
-      lrc_tenant:
-        description: Tenant ID
-        required: true
-        default: '688577294'
-        type: string
-      lrc_project:
-        description: Project ID
-        required: true
-        default: '1'
-        type: string
-      lrc_test_id:
-        description: Test ID
-        required: true
-        default: '123'
-        type: string
-      lrc_output_dir:
-        description: The directory to save results
-        required: false
-        default: ./results
-        type: string
-      lrc_report_types:
-        description: 'Target report types. For example: pdf, docx, csv'
-        required: false
-        default: ''
-        type: string
     secrets:
       LRC_CLIENT_ID:
         description: Client id of LoadRunner Cloud
